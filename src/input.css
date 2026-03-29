@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn-gpu {
+    @apply transition-transform transition-shadow duration-200 ease-in-out will-change-transform;
+  }
+  .btn-gpu:hover {
+    @apply scale-[1.02] shadow-xl;
+  }
+  .btn-gpu:active {
+    @apply scale-[0.98];
+  }
+}
