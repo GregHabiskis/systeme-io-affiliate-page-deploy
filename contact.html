@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us | All In One System</title>
+    <meta name="description" content="Get in touch with the All In One System support team. We are here to help you with any questions or concerns.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="https://d1yei2z3i6k35z.cloudfront.net/161/68f241caada76_Logo5.svg">
     <link rel="alternate icon" href="https://d1yei2z3i6k35z.cloudfront.net/161/68f241caada76_Logo5.svg">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Performance: Preload critical assets -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Tailwind CSS (Optimized with defer) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
-        tailwind.config = {
+        window.tailwindConfig = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0284c7',
+                        primary: '#0277b6',
                         primaryHover: '#0369a1',
                     }
                 }
             }
-        }
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.tailwind) {
+                tailwind.config = window.tailwindConfig;
+            }
+        });
     </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Lucide Icons (Optimized with defer) -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
     <div class="max-w-2xl mx-auto px-6 py-12 flex-grow w-full">
@@ -31,34 +43,38 @@
         
         <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-200 text-center">
             <div class="w-16 h-16 bg-sky-100 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="mail" class="w-8 h-8"></i>
+                <i data-lucide="mail" class="w-8 h-8" aria-hidden="true"></i>
             </div>
             
             <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
-            <p class="text-slate-600 mb-8 text-lg">We are here to help. If you have any questions, concerns, or need assistance with our resources, please reach out to our support team.</p>
+            <p class="text-slate-700 mb-8 text-lg">We are here to help. If you have any questions, concerns, or need assistance with our resources, please reach out to our support team.</p>
             
             <div class="bg-slate-50 rounded-xl p-6 mb-8 border border-slate-100">
-                <p class="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-2">Email Support</p>
+                <p class="text-sm text-slate-700 uppercase tracking-wider font-bold mb-2">Email Support</p>
                 <a href="mailto:support@allinonesystem.online" class="text-[13.3px] font-bold text-primary hover:text-primaryHover transition-colors break-all">
                     support@allinonesystem.online
                 </a>
             </div>
             
-            <div class="flex items-center justify-center text-slate-500 space-x-2">
-                <i data-lucide="clock" class="w-5 h-5"></i>
-                <p class="font-medium">All inquiries are handled within <span class="text-slate-800 font-bold">24-48 hours</span>.</p>
+            <div class="flex items-center justify-center text-slate-700 space-x-2">
+                <i data-lucide="clock" class="w-5 h-5" aria-hidden="true"></i>
+                <p class="font-medium">All inquiries are handled within <span class="text-slate-900 font-bold">24-48 hours</span>.</p>
             </div>
         </div>
 
         <div class="mt-12 text-center">
-            <p class="text-xs text-slate-400 font-semibold max-w-lg mx-auto">
+            <p class="text-xs text-slate-600 font-semibold max-w-lg mx-auto">
                 This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
             </p>
         </div>
     </div>
 
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>

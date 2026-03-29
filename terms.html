@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service</title>
+    <title>Terms of Service | All In One System</title>
+    <meta name="description" content="Read the Terms of Service for All In One System. Understand the rules and guidelines for using our website and services.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="https://d1yei2z3i6k35z.cloudfront.net/161/68f241caada76_Logo5.svg">
     <link rel="alternate icon" href="https://d1yei2z3i6k35z.cloudfront.net/161/68f241caada76_Logo5.svg">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Performance: Preload critical assets -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Tailwind CSS (Optimized with defer) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
-        tailwind.config = {
+        window.tailwindConfig = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0284c7',
+                        primary: '#0277b6',
                         primaryHover: '#0369a1',
                     }
                 }
             }
-        }
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.tailwind) {
+                tailwind.config = window.tailwindConfig;
+            }
+        });
     </script>
 </head>
 <body class="bg-white text-slate-900 font-sans antialiased">
@@ -28,9 +38,9 @@
         <a href="./" class="text-primary hover:underline mb-8 inline-block font-medium">&larr; Back to Home</a>
         
         <h1 class="text-3xl md:text-4xl font-bold mb-2">Terms of Service</h1>
-        <p class="text-slate-500 mb-8">Last Updated: March 2026</p>
+        <p class="text-slate-700 mb-8">Last Updated: March 2026</p>
 
-        <div class="space-y-8 text-slate-700 leading-relaxed">
+        <div class="space-y-8 text-slate-800 leading-relaxed">
             <section>
                 <h2 class="text-2xl font-semibold text-slate-900 mb-4">1. Acceptance of Terms</h2>
                 <p>By accessing and using https://allinonesystem.online (the "Website"), you accept and agree to be bound by the terms and provision of this agreement. In addition, when using this Website's particular services, you shall be subject to any posted guidelines or rules applicable to such services. Any participation in this service will constitute acceptance of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
