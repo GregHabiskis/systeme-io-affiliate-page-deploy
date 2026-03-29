@@ -10,121 +10,57 @@
     <link rel="icon" type="image/svg+xml" href="systeme-io-favicon.svg">
     <link rel="alternate icon" href="systeme-io-favicon.svg">
     
-    <!-- Performance: Preconnect to font CDN -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* Critical CSS - Extracted and Minified */
-        :root {
-            --primary: #0277b6;
-            --primary-hover: #0369a1;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-600: #475569;
-            --slate-700: #334155;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
-        }
-        *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: var(--slate-200); }
-        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-        body { margin: 0; background-color: #fff; color: var(--slate-900); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        .max-w-5xl { max-width: 64rem; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .flex-col { flex-direction: column; }
-        .text-center { text-align: center; }
-        .font-bold { font-weight: 700; }
-        .font-extrabold { font-weight: 800; }
-        .font-semibold { font-weight: 600; }
-        .font-medium { font-weight: 500; }
-        .text-primary { color: var(--primary); }
-        .bg-primary { background-color: var(--primary); }
-        .text-white { color: #fff; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .rounded-2xl { border-radius: 1rem; }
-        .rounded-full { border-radius: 9999px; }
-        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .w-full { width: 100%; }
-        .max-w-md { max-width: 28rem; }
-        .grid { display: grid; }
-        .gap-8 { gap: 2rem; }
-        .p-6 { padding: 1.5rem; }
-        .bg-slate-50 { background-color: var(--slate-50); }
-        .border-t { border-top-width: 1px; }
-        .border-b { border-bottom-width: 1px; }
-        .border-slate-100 { border-color: var(--slate-100); }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-10 { margin-bottom: 2.5rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .mt-12 { margin-top: 3rem; }
-        .text-sm { font-size: 0.875rem; }
-        .text-lg { font-size: 1.125rem; }
-        .text-xl { font-size: 1.25rem; }
-        .text-4xl { font-size: 2.25rem; }
-        .tracking-tight { letter-spacing: -0.025em; }
-        .leading-tight { line-height: 1.25; }
-        .leading-relaxed { line-height: 1.625; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-        
-        /* Composited Button Animation (GPU Accelerated) */
-        .btn-composite {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            text-decoration: none;
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-        }
-        .btn-composite:hover {
-            transform: scale(1.02);
-            background-color: var(--primary-hover);
-        }
-        .btn-composite:active {
-            transform: scale(0.98);
-        }
-
-        /* Responsive Utilities */
-        @media (min-width: 768px) {
-            .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-            .md\:text-6xl { font-size: 3.75rem; }
-            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .md\:justify-start { justify-content: flex-start; }
-        }
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        }
-    </style>
+    <!-- Performance: Preload critical assets -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Tailwind CSS (Optimized with defer) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script>
+        // Inline config to prevent FOUC and ensure immediate theme availability
+        window.tailwindConfig = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0277b6', // Darkened for better contrast (AA compliant)
+                        primaryHover: '#0369a1',
+                    }
+                }
+            }
+        };
+        // Apply config when tailwind is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.tailwind) {
+                tailwind.config = window.tailwindConfig;
+            }
+        });
+    </script>
+    
+    <!-- Lucide Icons (Optimized with defer) -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
-<body>
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-sky-100 overflow-x-hidden">
     <!-- Top Banner -->
-    <div class="bg-slate-50 border-b border-slate-100 py-4 text-center px-4">
-        <p class="text-sm font-medium" style="color: var(--slate-700)">
+    <div class="bg-slate-50 border-b border-slate-100 py-2 text-center px-4">
+        <p class="text-sm font-medium text-slate-700">
             Free Forever — No credit card required
         </p>
     </div>
 
     <!-- Navigation -->
-    <nav class="px-6 py-4 flex justify-center md:justify-start max-w-5xl mx-auto">
+    <nav class="px-6 py-4 flex justify-center max-w-5xl mx-auto">
         <a href="/" aria-label="Home" class="flex items-center">
-            <span class="font-bold" style="font-size: 1.5rem; color: #0077cc">systeme.io</span>
+            <span class="font-bold text-2xl tracking-tight text-[#0077cc]">systeme.io</span>
         </a>
     </nav>
 
     <main class="max-w-5xl mx-auto px-6">
         <!-- Hero Section -->
         <section class="py-12 md:py-24 text-center flex flex-col items-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6" style="max-width: 48rem">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6 max-w-3xl">
                 Build Your Entire Business for <span class="text-primary">$0/mo.</span>
             </h1>
-            <p class="text-lg md:text-xl mb-10 leading-relaxed" style="color: var(--slate-700); max-width: 42rem">
+            <p class="text-lg md:text-xl text-slate-700 mb-10 max-w-2xl leading-relaxed">
                 Replace ClickFunnels, Mailchimp, and Teachable with one simple tool.
             </p>
             
@@ -133,85 +69,85 @@
                     href="https://systeme.io/?sa=sa026732428704f7f89104d6c40e1fbcbc2a0f073a"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full bg-primary text-white font-semibold text-lg py-4 px-8 rounded-lg shadow-lg btn-composite"
+                    class="w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center min-h-[48px] whitespace-normal text-center"
                 >
                     Get Your Free Account Now
                 </a>
-                <span class="mt-2" style="font-size: 10px; color: var(--slate-600)">* (Partner Link)</span>
+                <span class="text-[10px] text-slate-600 mt-2">* (Partner Link)</span>
             </div>
         </section>
 
         <!-- Social Proof -->
-        <section class="py-8 border-t border-b border-slate-100 text-center">
-            <p style="color: var(--slate-700); font-weight: 500">
-                Join <span class="font-bold" style="color: var(--slate-900)">500,000+</span> entrepreneurs using this system.
+        <section class="py-8 border-y border-slate-100 text-center">
+            <p class="text-slate-700 font-medium">
+                Join <span class="text-slate-900 font-bold">500,000+</span> entrepreneurs using this system.
             </p>
         </section>
 
         <!-- Benefits Section -->
-        <section class="py-16 md:py-24">
-            <h2 class="sr-only">Our Benefits</h2>
+        <section class="py-16 md:py-24" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="sr-only">Our Benefits</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="flex items-center justify-center mb-4 rounded-full" style="width: 3rem; height: 3rem; background-color: #e0f2fe; color: var(--primary)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="credit-card" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">No Credit Card</h3>
-                    <p class="text-sm" style="color: var(--slate-700)">Start for free and never pay unless you want to upgrade.</p>
+                    <p class="text-slate-700 text-sm">Start for free and never pay unless you want to upgrade.</p>
                 </div>
                 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="flex items-center justify-center mb-4 rounded-full" style="width: 3rem; height: 3rem; background-color: #e0f2fe; color: var(--primary)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="mail" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Unlimited Emails</h3>
-                    <p class="text-sm" style="color: var(--slate-700)">Send as many emails as you want to your contacts.</p>
+                    <p class="text-slate-700 text-sm">Send as many emails as you want to your contacts.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="flex items-center justify-center mb-4 rounded-full" style="width: 3rem; height: 3rem; background-color: #e0f2fe; color: var(--primary)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg>
+                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="layout-template" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Drag & Drop</h3>
-                    <p class="text-sm" style="color: var(--slate-700)">Build funnels and websites easily with our visual editor.</p>
+                    <p class="text-slate-700 text-sm">Build funnels and websites easily with our visual editor.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="flex items-center justify-center mb-4 rounded-full" style="width: 3rem; height: 3rem; background-color: #e0f2fe; color: var(--primary)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="headphones" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
-                    <p class="text-sm" style="color: var(--slate-700)">Our team is always here to help you succeed.</p>
+                    <p class="text-slate-700 text-sm">Our team is always here to help you succeed.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Comparison Section -->
+        <!-- The "Killers" Section -->
         <section class="py-16 md:py-24 border-t border-slate-100">
-            <h2 class="text-center mb-12" style="font-size: 1.875rem; font-weight: 700">Stop Paying For Multiple Tools</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Stop Paying For Multiple Tools</h2>
             
-            <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200" style="overflow: hidden">
-                <div class="grid grid-cols-3 bg-slate-50 p-4 border-b border-slate-200 font-semibold text-sm" style="color: var(--slate-700)">
-                    <div>Tool</div>
+            <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="grid grid-cols-3 bg-slate-50 p-4 border-b border-slate-200 font-semibold text-sm text-slate-700">
+                    <div class="col-span-1">Tool</div>
                     <div class="text-center">Their Price</div>
                     <div class="text-center text-primary">Systeme.io</div>
                 </div>
                 
                 <div class="grid grid-cols-3 p-4 border-b border-slate-100 items-center">
                     <div class="font-medium">ClickFunnels</div>
-                    <div class="text-center line-through" style="color: var(--slate-600)">$147/mo</div>
+                    <div class="text-center text-slate-600 line-through">$147/mo</div>
                     <div class="text-center font-bold text-primary">$0/mo</div>
                 </div>
                 
                 <div class="grid grid-cols-3 p-4 border-b border-slate-100 items-center">
                     <div class="font-medium">Mailchimp</div>
-                    <div class="text-center line-through" style="color: var(--slate-600)">$20/mo</div>
+                    <div class="text-center text-slate-600 line-through">$20/mo</div>
                     <div class="text-center font-bold text-primary">$0/mo</div>
                 </div>
                 
                 <div class="grid grid-cols-3 p-4 items-center">
                     <div class="font-medium">HubSpot</div>
-                    <div class="text-center line-through" style="color: var(--slate-600)">$20+/mo</div>
+                    <div class="text-center text-slate-600 line-through">$20+/mo</div>
                     <div class="text-center font-bold text-primary">$0/mo</div>
                 </div>
             </div>
@@ -221,11 +157,11 @@
                     href="https://systeme.io/?sa=sa026732428704f7f89104d6c40e1fbcbc2a0f073a"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full bg-primary text-white font-semibold text-lg py-4 px-8 rounded-lg shadow-lg btn-composite"
+                    class="w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center min-h-[48px] whitespace-normal text-center"
                 >
                     Get Started For Free
                 </a>
-                <span class="mt-2" style="font-size: 10px; color: var(--slate-600)">* (Partner Link)</span>
+                <span class="text-[10px] text-slate-600 mt-2">* (Partner Link)</span>
             </div>
         </section>
     </main>
@@ -233,20 +169,20 @@
     <!-- Footer -->
     <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
         <div class="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
-            <nav class="flex flex-wrap justify-center mb-6" style="column-gap: 1.5rem; row-gap: 0.5rem">
-                <a href="privacy.html" class="text-sm font-medium" style="color: var(--slate-700); text-decoration: none">Privacy Policy</a>
-                <a href="terms.html" class="text-sm font-medium" style="color: var(--slate-700); text-decoration: none">Terms of Service</a>
-                <a href="contact.html" class="text-sm font-medium" style="color: var(--slate-700); text-decoration: none">Contact Us</a>
+            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6" aria-label="Footer Navigation">
+                <a href="privacy.html" class="text-sm text-slate-700 hover:text-slate-900 font-medium">Privacy Policy</a>
+                <a href="terms.html" class="text-sm text-slate-700 hover:text-slate-900 font-medium">Terms of Service</a>
+                <a href="contact.html" class="text-sm text-slate-700 hover:text-slate-900 font-medium">Contact Us</a>
             </nav>
             
-            <div class="space-y-4" style="max-width: 56rem">
-                <p class="text-sm font-semibold" style="color: var(--slate-700)">
+            <div class="space-y-4 max-w-4xl">
+                <p class="text-sm text-slate-700 font-semibold">
                     &copy; 2026 All In One System. All Rights Reserved.
                 </p>
 
-                <div class="text-center" style="font-size: 10px; color: var(--slate-600); line-height: 1.625">
-                    <p style="margin-bottom: 0.75rem">
-                        <strong>Affiliate & Platform Disclosure:</strong> This is an independent affiliate site and is not part of the official <a href="https://Systeme.io" target="_blank" rel="noopener noreferrer" class="underline">Systeme.io</a> company. Some links on this page may be affiliate links, meaning we may receive a commission if you choose to make a purchase through them at no extra cost to you.
+                <div class="text-[10px] text-slate-600 leading-relaxed space-y-3">
+                    <p>
+                        <strong>Affiliate & Platform Disclosure:</strong> This is an independent affiliate site and is not part of the official <a href="https://Systeme.io" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-800">Systeme.io</a> company. Some links on this page may be affiliate links, meaning we may receive a commission if you choose to make a purchase through them at no extra cost to you.
                     </p>
                     <p>
                         <strong>Meta Disclaimer:</strong> This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
@@ -255,5 +191,15 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Initialize Lucide icons after DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
+
