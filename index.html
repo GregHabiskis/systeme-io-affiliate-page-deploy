@@ -14,6 +14,21 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://unpkg.com">
     
+    <!-- Critical CSS: Essential styles to prevent FOUC and CLS -->
+    <style>
+        body { background-color: #ffffff; color: #0f172a; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; margin: 0; }
+        .max-w-5xl { max-width: 64rem; margin-left: auto; margin-right: auto; }
+        .bg-slate-50 { background-color: #f8fafc; }
+        .border-b { border-bottom-width: 1px; }
+        .border-slate-100 { border-color: #f1f5f9; }
+        .text-primary { color: #0277b6; }
+        .nav-logo-container { display: flex; justify-content: center; padding: 1rem 1.5rem; }
+        .icon-placeholder { width: 3rem; height: 3rem; background-color: #e0f2fe; border-radius: 9999px; display: flex; align-items: center; justify-content: center; }
+        .btn-gpu { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s; will-change: transform; }
+        .btn-gpu:hover { transform: scale(1.02); }
+        .btn-gpu:active { transform: scale(0.98); }
+    </style>
+
     <!-- Tailwind CSS (Optimized with defer) -->
     <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
@@ -41,16 +56,19 @@
 </head>
 <body class="bg-white text-slate-900 font-sans antialiased selection:bg-sky-100 overflow-x-hidden">
     <!-- Top Banner -->
-    <div class="bg-slate-50 border-b border-slate-100 py-2 text-center px-4">
+    <div class="bg-slate-50 border-b border-slate-100 py-2 text-center px-4 min-h-[37px]">
         <p class="text-sm font-medium text-slate-700">
             Free Forever — No credit card required
         </p>
     </div>
 
     <!-- Navigation -->
-    <nav class="px-6 py-4 flex justify-center max-w-5xl mx-auto">
+    <nav class="px-6 py-4 flex justify-center max-w-5xl mx-auto min-h-[64px]">
         <a href="/" aria-label="Home" class="flex items-center">
-            <span class="font-bold text-2xl tracking-tight text-[#0077cc]">systeme.io</span>
+            <svg width="140" height="32" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto" aria-hidden="true">
+                <path d="M15.5 26.5c-4.5 0-7.5-2.5-7.5-6.5h4c0 2 1.5 3 3.5 3s3.5-1 3.5-2.5c0-1.5-1-2.5-3.5-2.5l-2-.5c-3.5-.5-5.5-2.5-5.5-5.5 0-3.5 3-6 7.5-6s7.5 2.5 7.5 6h-4c0-2-1.5-3-3.5-3s-3.5 1-3.5 2.5c0 1.5 1 2.5 3.5 2.5l2 .5c3.5.5 5.5 2.5 5.5 5.5 0 3.5-3 6.5-7.5 6.5z" fill="#0077cc"/>
+                <text x="32" y="27" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="22" fill="#0077cc">systeme.io</text>
+            </svg>
         </a>
     </nav>
 
@@ -69,7 +87,7 @@
                     href="https://systeme.io/?sa=sa026732428704f7f89104d6c40e1fbcbc2a0f073a"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center min-h-[48px] whitespace-normal text-center"
+                    class="btn-gpu w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center min-h-[60px] whitespace-normal text-center"
                 >
                     Get Your Free Account Now
                 </a>
@@ -78,7 +96,7 @@
         </section>
 
         <!-- Social Proof -->
-        <section class="py-8 border-y border-slate-100 text-center">
+        <section class="py-8 border-y border-slate-100 text-center min-h-[73px]">
             <p class="text-slate-700 font-medium">
                 Join <span class="text-slate-900 font-bold">500,000+</span> entrepreneurs using this system.
             </p>
@@ -89,32 +107,32 @@
             <h2 id="benefits-heading" class="sr-only">Our Benefits</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
-                        <i data-lucide="credit-card" aria-hidden="true"></i>
+                    <div class="icon-placeholder w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="credit-card" width="24" height="24" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">No Credit Card</h3>
                     <p class="text-slate-700 text-sm">Start for free and never pay unless you want to upgrade.</p>
                 </div>
                 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
-                        <i data-lucide="mail" aria-hidden="true"></i>
+                    <div class="icon-placeholder w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="mail" width="24" height="24" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Unlimited Emails</h3>
                     <p class="text-slate-700 text-sm">Send as many emails as you want to your contacts.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
-                        <i data-lucide="layout-template" aria-hidden="true"></i>
+                    <div class="icon-placeholder w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="layout-template" width="24" height="24" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Drag & Drop</h3>
                     <p class="text-slate-700 text-sm">Build funnels and websites easily with our visual editor.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50">
-                    <div class="w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
-                        <i data-lucide="headphones" aria-hidden="true"></i>
+                    <div class="icon-placeholder w-12 h-12 bg-sky-100 text-primary rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="headphones" width="24" height="24" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
                     <p class="text-slate-700 text-sm">Our team is always here to help you succeed.</p>
@@ -157,7 +175,7 @@
                     href="https://systeme.io/?sa=sa026732428704f7f89104d6c40e1fbcbc2a0f073a"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center min-h-[48px] whitespace-normal text-center"
+                    class="btn-gpu w-full bg-primary hover:bg-primaryHover text-white font-semibold text-base sm:text-lg py-4 px-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center min-h-[60px] whitespace-normal text-center"
                 >
                     Get Started For Free
                 </a>
