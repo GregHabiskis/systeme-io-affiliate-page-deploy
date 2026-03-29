@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #0077cc;
+  --color-primaryHover: #0066b3;
+}
+
 @layer base {
   body {
     @apply bg-white text-slate-900 font-sans antialiased;
